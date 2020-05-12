@@ -26,9 +26,14 @@ const App = {
     }
   },
 
-  setStatus: function (message) {
-    const status = document.getElementById("status");
-    status.innerHTML = message;
+  setStatus: function (message, action) {
+    if (action == "create") {
+      const status = document.getElementById("status");
+      status.innerHTML = message;
+    } else {
+      const status2 = document.getElementById("status2");
+      status2.innerHTML = message;
+    }
   },
 
   createStar: async function () {
@@ -36,7 +41,14 @@ const App = {
     const name = document.getElementById("starName").value;
     const id = document.getElementById("starId").value;
     await createStar(name, id).send({ from: this.account });
-    App.setStatus("New Star Owner is " + this.account + ".");
+    App.setStatus("New Star Owner is " + this.account + ".", "create");
+  },
+
+  lookUpTokenIdToStarInfo: async function () {
+    const { lookUpTokenIdToStarInfo } = this.meta.methods;
+    const tokenId = document.getElementById("lookup").value;
+    const starName = await lookUpTokenIdToStarInfo(parseInt(tokenId)).call();
+    App.setStatus(`The name of the star is ${starName}`, "lookup");
   },
 };
 
