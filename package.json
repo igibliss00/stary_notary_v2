@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "starNotaryv2",
   "version": "1.0.0",
   "description": "",

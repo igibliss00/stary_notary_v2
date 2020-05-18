@@ -1,8 +1,10 @@
 const path = require("path");
+// import path from "path";
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+// import CopyWebpackPlugin from "copy-webpack-plugin";
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: "./src/index.js",
   output: {
     filename: "index.js",
